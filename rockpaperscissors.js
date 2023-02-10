@@ -22,9 +22,11 @@ function getComputerChoice(){
 //compare player input vs computer random choice
 //determine winner vs loser
 //output result
-let playerChoice = prompt("Rock, Paper, or Scissors?");
-let playerChoiceLower = playerChoice.toLowerCase();
-function playRound(playerChoice, getComputerChoice){
+
+
+function playRound(){
+  let playerChoice = prompt("Rock, Paper, or Scissors?");
+  let playerChoiceLower = playerChoice.toLowerCase();
     if (playerChoiceLower == "rock" && computerChoice == 2){
         return("You lose! Paper beats Rock!")
     }else if(playerChoiceLower == "scissors" && computerChoice == 1){
@@ -42,4 +44,6 @@ function playRound(playerChoice, getComputerChoice){
     }
 }
 
-console.log(playRound())
+  for (i=0; i<5; i++) {
+    console.log(playRound())
+  }
