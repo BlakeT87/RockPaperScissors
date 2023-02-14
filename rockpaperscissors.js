@@ -7,8 +7,11 @@ let userScore = 0;
 
 function playround(){
 //Ask user to choose rock/paper/scissors
-//Store the value as userChoice
-let userChoice = prompt("Rock, Paper, or Scissors?");
+//Store the value as userChoicePrompt
+let userChoicePrompt = prompt("Rock, Paper, or Scissors?");
+
+//Make user choice != case sensitive
+let userChoice = userChoicePrompt.toLowerCase();
 
 //Ask computer to choose random between 1 and 3
 let computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -27,51 +30,60 @@ if (computerChoice === 1){
 //compare userChoice vs computerChoice
 //if userChoice is rock and computerChoice is paper, add point to computerScore and log result
 if (userChoice == "rock" && computerChoice == "paper"){
-  console.log("Computer score:" + computerScore++);
+    computerScore++;
+  console.log("Computer score:" + computerScore);
   console.log("Player score:" + userScore);
   console.log("You lose! Paper beats rock!");
 }
 //if userChoice is paper and computerChoice is scissors, add point to computerScore and log result
 if (userChoice == "paper" && computerChoice == "scissors"){
-  console.log("Computer score:" + computerScore++);
+    computerScore++;  
+  console.log("Computer score:" + computerScore);
   console.log("Player score:" + userScore);
   console.log("You lose! Scissors beats paper!");
 }
 //if userChoice is scissors and computerChoice is rock, add point to computerScore and log result
 if (userChoice == "scissors" && computerChoice == "rock"){
-  console.log("Computer score:" + computerScore++);
+    computerScore++;
+  console.log("Computer score:" + computerScore);
   console.log("Player score:" + userScore);
   console.log("You lose! Rock beats scissors!");
 }
 //if userChoice is rock and computerChoice is scissors, add point to userScore and log result
 if (userChoice == "rock" && computerChoice == "scissors"){
+    userScore++;
   console.log("Computer score:" + computerScore);
-  console.log("Player score:" + userScore++);
+  console.log("Player score:" + userScore);
   console.log("You win! Rock beats scissors!");
 }
 //if userChoice is paper and computerChoice is rock, add point to userScore and log result
 if (userChoice == "paper" && computerChoice == "rock"){
+    userScore++;
   console.log("Computer score:" + computerScore);
-  console.log("Player score:" + userScore++);
+  console.log("Player score:" + userScore);
   console.log("You win! Paper beats rock!");
 }
 //if userChoice is scissors and computerChoice is paper, add point to userScore and log result
 if (userChoice == "scissors" && computerChoice == "paper"){
+    userScore++;
   console.log("Computer score:" + computerScore);
-  console.log("Player score:" + userScore++);
+  console.log("Player score:" + userScore);
   console.log("You win! Scissors beats paper!");
 }
 //if userChoice is equal to computerChoice, add no points, and log result as 'stalemate'
 if (userChoice == computerChoice){
-  console.log("Stalemate!")
+  console.log("Stalemate!");
 }
 }
 //run loop until userScore OR computerScore = 5
-while (userScore <= 5 && computerScore <= 5){
-    if (userScore === 5) {
-        alert("Great job! You win! Refresh the page to play again!");
-    }else if (computerScore === 5) {
-        alert("Sorry, you lose, refresh to try again!");
-    }
-    console.log(playround());
+do {
+    playround()
+} while (userScore !== 5 && computerScore !== 5)
+
+if(userScore === 5){
+    alert("Congratulations! You win! Refresh to play again!");
 }
+if(computerScore === 5){
+    alert("Sorry, you lose this time! Refresh to try again!");
+}
+
