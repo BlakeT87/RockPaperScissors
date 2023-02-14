@@ -1,71 +1,77 @@
-//function to randomly return rock, paper, or scissors
-//randomly select int between 1-3
-//assign int to rock/paper/scissors string
-//log choice to console
+//Rock Paper Scissors
+//set computerScore to 0
+let computerScore = 0;
 
-//Play a round of rock/paper/scissors against the computer
-//get player input for choice of rock/paper/scissors
-//compare player input vs computer random choice
-//determine winner vs loser
-//output result
+//set userScore to 0
+let userScore = 0;
 
-//Track result of round to determine winner at end of 5 rounds
-//loop the function 5 times
-//save the outcome at the end of each loop
-//count the outcome for human
-//count the outcome for computer
-//compare count of human vs computer
-//declare winner
-let score = 0;
-function playRound(){
-    let computerChoice = Math.floor(Math.random() * 3)+1;
-  function getComputerChoice(){
-      if (computerChoice === 1){
-          return("Rock")
-      }else if (computerChoice === 2){
-          return("Paper")
-      }else if (computerChoice === 3){
-          return("Scissors")
-      }else{
-          return("error")
-      }
+function playround(){
+//Ask user to choose rock/paper/scissors
+//Store the value as userChoice
+let userChoice = prompt("Rock, Paper, or Scissors?");
+
+//Ask computer to choose random between 1 and 3
+let computerChoice = Math.floor(Math.random() * 3) + 1;
+//Store 1-3 random value as computerChoice 1 = rock, 2 = paper, 3 = scissors
+
+if (computerChoice === 1){
+    computerChoice = "rock";
+}else if (computerChoice === 2){
+    computerChoice = "paper";
+}else if (computerChoice === 3){
+    computerChoice = "scissors";
+}else{
+    console.log("error - no computer choice");
+}
+
+//compare userChoice vs computerChoice
+//if userChoice is rock and computerChoice is paper, add point to computerScore and log result
+if (userChoice == "rock" && computerChoice == "paper"){
+  console.log("Computer score:" + computerScore++);
+  console.log("Player score:" + userScore);
+  console.log("You lose! Paper beats rock!");
+}
+//if userChoice is paper and computerChoice is scissors, add point to computerScore and log result
+if (userChoice == "paper" && computerChoice == "scissors"){
+  console.log("Computer score:" + computerScore++);
+  console.log("Player score:" + userScore);
+  console.log("You lose! Scissors beats paper!");
+}
+//if userChoice is scissors and computerChoice is rock, add point to computerScore and log result
+if (userChoice == "scissors" && computerChoice == "rock"){
+  console.log("Computer score:" + computerScore++);
+  console.log("Player score:" + userScore);
+  console.log("You lose! Rock beats scissors!");
+}
+//if userChoice is rock and computerChoice is scissors, add point to userScore and log result
+if (userChoice == "rock" && computerChoice == "scissors"){
+  console.log("Computer score:" + computerScore);
+  console.log("Player score:" + userScore++);
+  console.log("You win! Rock beats scissors!");
+}
+//if userChoice is paper and computerChoice is rock, add point to userScore and log result
+if (userChoice == "paper" && computerChoice == "rock"){
+  console.log("Computer score:" + computerScore);
+  console.log("Player score:" + userScore++);
+  console.log("You win! Paper beats rock!");
+}
+//if userChoice is scissors and computerChoice is paper, add point to userScore and log result
+if (userChoice == "scissors" && computerChoice == "paper"){
+  console.log("Computer score:" + computerScore);
+  console.log("Player score:" + userScore++);
+  console.log("You win! Scissors beats paper!");
+}
+//if userChoice is equal to computerChoice, add no points, and log result as 'stalemate'
+if (userChoice == computerChoice){
+  console.log("Stalemate!")
+}
+}
+//run loop until userScore OR computerScore = 5
+while (userScore <= 5 && computerScore <= 5){
+    if (userScore === 5) {
+        alert("Great job! You win! Refresh the page to play again!");
+    }else if (computerScore === 5) {
+        alert("Sorry, you lose, refresh to try again!");
     }
-
-    let playerChoice = prompt("Rock, Paper, or Scissors?");
-    let playerChoiceLower = playerChoice.toLowerCase();
-      if (playerChoiceLower == "rock" && computerChoice == 2){
-          return("You lose! Paper beats Rock!");
-          let score = score--
-      }else if(playerChoiceLower == "scissors" && computerChoice == 1){
-          return("You lose! Rock beats Scissors!")
-          let score = score--
-      }else if(playerChoiceLower == "paper" && computerChoice == 3){
-          return("You lose! Scissors beats Paper!");
-          let score = score--;
-      }else if(playerChoiceLower == "rock" && computerChoice == 3){
-          return("You Win!");
-          let score = score++;
-      }else if(playerChoiceLower == "paper" && computerChoice == 1){
-          return("You Win!")
-          let score = score++;
-      }else if(playerChoiceLower == "scissors" && computerChoice ==2){
-          return("You Win!");
-          let score = score++;
-      }else{
-          return("Stalemate!")
-      }
-  }
-  
-    for (i=0; i<5; i++) {
-      console.log(playRound())
-    }
-
-    if (score == Math.sign(-1)){
-        console.log("sorry, you lose!")
-    }else if(score == Math.sign(1)){
-        console.log("you win!")
-    }else if(score == score){
-        console.log("it's a tie!")
-    }else{
-        console.log(error)
-    }
+    console.log(playround());
+}
